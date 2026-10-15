@@ -1,126 +1,243 @@
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="mn" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лаб 5 - Layout</title>
+    <title>Лаб 6 - Сургалтын төв ба зургийн цомог</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <a class="skip-link" href="#gallery">Агуулга руу очих</a>
+
     <header class="site-header">
-        <h1 class="site-title">Сургалтын төв</h1>
-        <p class="site-subtitle">Лаб 5: Responsive ба Mobile-First</p>
+        <div class="header-inner">
+            <div>
+                <h1 class="site-title">Сургалтын төв</h1>
+                <p class="site-subtitle">Лаб 6: CSS3 animation, transform, multimedia</p>
+            </div>
+            <button type="button" class="theme-btn" id="themeToggle" aria-pressed="false">
+                <span id="themeLabel">Цайвар горим</span>
+            </button>
+        </div>
     </header>
 
-    <nav class="main-nav">
-    <button class="nav-toggle" id="navToggle"
-            aria-expanded="false" aria-controls="navList"
-            aria-label="Цэс нээх/хаах">☰</button>
-
-    <ul class="nav-list" id="navList">
-        <li><a href="#">Нүүр</a></li>
-        <li><a href="#courses">Хичээлүүд</a></li>
-        <li><a href="#register">Бүртгүүлэх</a></li>
-        <li><a href="#">Холбоо барих</a></li>
-    </ul>
-</nav>
+    <nav class="main-nav" aria-label="Үндсэн цэс">
+        <button class="nav-toggle" id="navToggle" type="button"
+                aria-expanded="false" aria-controls="navList"
+                aria-label="Цэс нээх/хаах">☰</button>
+        <ul class="nav-list" id="navList">
+            <li><a href="#courses">Хичээлүүд</a></li>
+            <li><a href="#gallery">Цомог</a></li>
+            <li><a href="#video">Видео</a></li>
+            <li><a href="#register">Бүртгүүлэх</a></li>
+        </ul>
+    </nav>
 
     <div class="page-layout">
 
-        <main class="main-content">
+    <main class="main-content">
 
-            <section id="courses">
-                <h2 class="section-title">Манай хичээлүүд</h2>
-                <div class="card-grid">
-                    <article class="card">
-                        <h3>Веб хөгжүүлэлт</h3>
-                        <p>HTML, CSS, JavaScript-ийн үндэс.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Программчлал</h3>
-                        <p>Алгоритм, өгөгдлийн бүтэц, Python.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Өгөгдлийн сан</h3>
-                        <p>SQL, хүснэгтийн загварчлал.</p>
-                    </article>
+        <!-- ===== Лаб 4/5: хичээлүүд (Grid 3 багана) ===== -->
+        <section id="courses">
+            <h2 class="section-title">Манай хичээлүүд</h2>
+            <div class="card-grid">
+                <article class="card"><h3>Веб хөгжүүлэлт</h3><p>HTML, CSS, JavaScript-ийн үндэс.</p></article>
+                <article class="card"><h3>Программчлал</h3><p>Алгоритм, өгөгдлийн бүтэц, Python.</p></article>
+                <article class="card"><h3>Өгөгдлийн сан</h3><p>SQL, хүснэгтийн загварчлал.</p></article>
+            </div>
+        </section>
+
+        <!-- ===== 1. GALLERY: hover/focus + 3D flip + stagger ===== -->
+        <section id="gallery">
+            <h2 class="section-title">Зургийн цомог</h2>
+            <p class="section-lead">Зураг дээр хулганаа аваачих эсвэл Tab дарж фокуслах, мөн "Эргүүлэх" товчоор нөгөө талыг нь хараарай.</p>
+
+            <div class="gallery">
+
+                <article class="flip-card" style="--i:0">
+                    <div class="flip-inner">
+                        <div class="face face-front">
+                            <img src="img/photo1.jpg" alt="Уулын зураг" width="800" height="600" loading="lazy">
+                            <button type="button" class="flip-btn" aria-label="Зураг 1-ийг эргүүлэх">Эргүүлэх</button>
+                        </div>
+                        <div class="face face-back">
+                            <h3>Уул</h3>
+                            <p>Өглөөний цагт авсан зураг.</p>
+                            <button type="button" class="flip-btn" aria-label="Зураг 1-д буцах">Буцах</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card" style="--i:1">
+                    <div class="flip-inner">
+                        <div class="face face-front">
+                            <img src="img/photo2.jpg" alt="Нууруудын зураг" width="800" height="600" loading="lazy">
+                            <button type="button" class="flip-btn" aria-label="Зураг 2-ыг эргүүлэх">Эргүүлэх</button>
+                        </div>
+                        <div class="face face-back">
+                            <h3>Нуур</h3>
+                            <p>Тайван усны гадаргуу.</p>
+                            <button type="button" class="flip-btn" aria-label="Зураг 2-т буцах">Буцах</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card" style="--i:2">
+                    <div class="flip-inner">
+                        <div class="face face-front">
+                            <img src="img/photo3.jpg" alt="Хээрийн зураг" width="800" height="600" loading="lazy">
+                            <button type="button" class="flip-btn" aria-label="Зураг 3-ыг эргүүлэх">Эргүүлэх</button>
+                        </div>
+                        <div class="face face-back">
+                            <h3>Хээр</h3>
+                            <p>Өргөн уудам тал нутаг.</p>
+                            <button type="button" class="flip-btn" aria-label="Зураг 3-т буцах">Буцах</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card" style="--i:3">
+                    <div class="flip-inner">
+                        <div class="face face-front">
+                            <img src="img/photo4.jpg" alt="Хотын зураг" width="800" height="600" loading="lazy">
+                            <button type="button" class="flip-btn" aria-label="Зураг 4-ийг эргүүлэх">Эргүүлэх</button>
+                        </div>
+                        <div class="face face-back">
+                            <h3>Хот</h3>
+                            <p>Үдшийн гэрэлтэй хот.</p>
+                            <button type="button" class="flip-btn" aria-label="Зураг 4-т буцах">Буцах</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card" style="--i:4">
+                    <div class="flip-inner">
+                        <div class="face face-front">
+                            <img src="img/photo5.jpg" alt="Ойн зураг" width="800" height="600" loading="lazy">
+                            <button type="button" class="flip-btn" aria-label="Зураг 5-ыг эргүүлэх">Эргүүлэх</button>
+                        </div>
+                        <div class="face face-back">
+                            <h3>Ой</h3>
+                            <p>Нарсан ойн дундах зам.</p>
+                            <button type="button" class="flip-btn" aria-label="Зураг 5-д буцах">Буцах</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flip-card" style="--i:5">
+                    <div class="flip-inner">
+                        <div class="face face-front">
+                            <img src="img/photo6.jpg" alt="Тэнгэрийн зураг" width="800" height="600" loading="lazy">
+                            <button type="button" class="flip-btn" aria-label="Зураг 6-г эргүүлэх">Эргүүлэх</button>
+                        </div>
+                        <div class="face face-back">
+                            <h3>Тэнгэр</h3>
+                            <p>Нар жаргах үеийн тэнгэр.</p>
+                            <button type="button" class="flip-btn" aria-label="Зураг 6-д буцах">Буцах</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===== 2. VIDEO + track ===== -->
+        <section id="video">
+            <h2 class="section-title">Видео</h2>
+            <video controls preload="metadata" width="960" height="540">
+                <source src="video/clip.webm" type="video/webm">
+                <source src="video/clip.mp4" type="video/mp4">
+                <track kind="subtitles" src="video/clip.mn.vtt"
+                       srclang="mn" label="Монгол" default>
+                Таны хөтөч video элемент дэмждэггүй байна.
+                <a href="video/clip.mp4">Видеог татаж авах</a>.
+            </video>
+        </section>
+
+        <!-- ===== 3. IFRAME (аюулгүй) ===== -->
+        <section id="map">
+            <h2 class="section-title">Газрын зураг</h2>
+            <div class="map-wrap">
+                <iframe
+                    title="Улаанбаатар хотын газрын зураг (OpenStreetMap)"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=106.85%2C47.88%2C106.98%2C47.95&amp;layer=mapnik"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin"
+                    referrerpolicy="no-referrer"></iframe>
+            </div>
+        </section>
+
+        <!-- ===== 4. INLINE SVG ===== -->
+        <section id="about">
+            <h2 class="section-title">Тухай</h2>
+            <div class="about-box">
+                <svg class="camera-icon" viewBox="0 0 64 64" role="img" aria-labelledby="camTitle camDesc">
+                    <title id="camTitle">Фотоаппаратын дүрс</title>
+                    <desc id="camDesc">Зургийн цомгийг төлөөлөх энгийн камерын дүрс</desc>
+                    <rect x="6" y="18" width="52" height="34" rx="6" fill="currentColor" opacity="0.25"/>
+                    <path d="M22 18l4-8h12l4 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                    <circle cx="32" cy="35" r="11" fill="none" stroke="currentColor" stroke-width="3"/>
+                    <circle cx="32" cy="35" r="4" fill="currentColor"/>
+                </svg>
+                <p>Энэ хуудас нь Лаб 4, 5-ын Grid болон responsive загварыг үргэлжлүүлж, CSS3 animation, 3D flip card, dark mode, multimedia-г хүртээмжтэй байдлаар хэрэгжүүлсэн.</p>
+            </div>
+        </section>
+
+        <!-- ===== Лаб 3: бүртгэлийн форм ===== -->
+        <section id="register" class="form-container">
+            <span class="badge">LAB 3</span>
+            <h2 class="form-title">Бүртгэлийн форм</h2>
+            <p class="form-description">Өөрийн мэдээллээ оруулж бүртгүүлнэ үү.</p>
+
+            <form>
+                <div class="form-group">
+                    <label for="fullname">Овог, нэр</label>
+                    <input type="text" id="fullname" class="form-input" placeholder="Нэрээ оруулна уу" required>
                 </div>
-            </section>
+                <div class="form-group">
+                    <label for="email">И-мэйл хаяг</label>
+                    <input type="email" id="email" class="form-input" placeholder="example@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Нууц үг</label>
+                    <input type="password" id="password" class="form-input" placeholder="Нууц үгээ оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Сонгох хичээл</label>
+                    <select id="course" class="form-input" required>
+                        <option value="">Хичээлээ сонгоно уу</option>
+                        <option>Веб хөгжүүлэлт</option>
+                        <option>Программчлал</option>
+                        <option>Өгөгдлийн сан</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Бүртгүүлэх</button>
+            </form>
+            <p class="form-footer">Мэдээллээ зөв оруулна уу.</p>
+        </section>
 
-            <section id="register" class="form-container">
-                <span class="badge">LAB 3</span>
-                <h2 class="form-title">Бүртгэлийн форм</h2>
-                <p class="form-description">
-                    Өөрийн мэдээллээ оруулж бүртгүүлнэ үү.
-                </p>
+    </main>
 
-                <form>
-                    <div class="form-group">
-                        <label for="fullname">Овог, нэр</label>
-                        <input type="text" id="fullname" class="form-input"
-                               placeholder="Нэрээ оруулна уу" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">И-мэйл хаяг</label>
-                        <input type="email" id="email" class="form-input"
-                               placeholder="example@gmail.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Нууц үг</label>
-                        <input type="password" id="password" class="form-input"
-                               placeholder="Нууц үгээ оруулна уу" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="course">Сонгох хичээл</label>
-                        <select id="course" class="form-input" required>
-                            <option value="">Хичээлээ сонгоно уу</option>
-                            <option>Веб хөгжүүлэлт</option>
-                            <option>Программчлал</option>
-                            <option>Өгөгдлийн сан</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Бүртгүүлэх</button>
-                </form>
-
-                <p class="form-footer">Мэдээллээ зөв оруулна уу.</p>
-            </section>
-
-        </main>
-
-        <aside class="sidebar">
-            <h2 class="section-title">Мэдээлэл</h2>
-            <ul class="sidebar-list">
-                <li>Хичээл эхлэх: 9-р сарын 1</li>
-                <li>Долоо хоногт 2 удаа</li>
-                <li>Онлайн болон танхимаар</li>
-            </ul>
-        </aside>
+    <aside class="sidebar">
+        <h2 class="section-title">Мэдээлэл</h2>
+        <ul class="sidebar-list">
+            <li>Хичээл эхлэх: 9-р сарын 1</li>
+            <li>Долоо хоногт 2 удаа</li>
+            <li>Онлайн болон танхимаар</li>
+        </ul>
+    </aside>
 
     </div>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Сургалтын төв. Бүх эрх хуулиар хамгаалагдсан.</p>
+        <p>&copy; 2026 Зургийн цомог портал</p>
     </footer>
-<script>
-    const toggle = document.getElementById("navToggle");
-    const navList = document.getElementById("navList");
 
-    toggle.addEventListener("click", () => {
-        const isOpen = navList.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", isOpen);
-        toggle.textContent = isOpen ? "✕" : "☰";
-    });
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
